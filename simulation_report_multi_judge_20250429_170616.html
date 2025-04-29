@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coaching Simulation Report (Multi-Judge)</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 20px; line-height: 1.6; background-color: #f4f7f6; color: #333; }
+        .container { max-width: 1200px; margin: auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1, h2, h3, h4 { color: #2c3e50; border-bottom: 2px solid #e0e0e0; padding-bottom: 5px; margin-top: 30px; }
+        h1 { text-align: center; border-bottom: none; margin-bottom: 20px; color: #3498db; }
+        h2 { border-bottom-color: #3498db; }
+        h4 { border-bottom: none; margin-top: 20px; color: #16a085; } /* Sub-section headers */
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; font-size: 0.95em; table-layout: fixed; }
+        th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; vertical-align: top; word-wrap: break-word; }
+        th { background-color: #e9ecef; font-weight: 600; color: #495057; }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        .summary-box, .config-box, .scenario-box, .overall-performance-box, .judge-config-box, .coach-details-box {
+            border: 1px solid #dee2e6; padding: 20px; border-radius: 6px; margin-bottom: 25px; background-color: #fff;
+        }
+        .coach-details-box { border-left: 5px solid #1abc9c; background-color: #f0fefc; }
+        .judge-config-box { border-left: 5px solid #9b59b6; background-color: #fbf5ff; } /* Purple for judge config */
+        .overall-performance-box { border-left: 5px solid #3498db; background-color: #f0f9ff; }
+        .scenario-box { border-left: 5px solid #f39c12; background-color: #fffaf0; } /* Orange for scenarios */
+        .summary-box h2, .config-box h2, .scenario-box h3, .overall-performance-box h2, .judge-config-box h2, .coach-details-box h2 { margin-top: 0; border-bottom: none; }
+        .config-box table { width: 100%; table-layout: auto; }
+        .config-box th:first-child { width: 25%; }
+        .scenario-box table th:first-child { width: 220px; }
+        .competency-table th:last-child, .competency-table td:last-child { text-align: right; font-weight: bold; }
+        .per-judge-table th:nth-child(n+2), .per-judge-table td:nth-child(n+2) { text-align: right; } /* Right align score columns */
+        .timestamp { text-align: center; color: #6c757d; margin-bottom: 30px; font-size: 0.9em; }
+        .status-failed { color: #dc3545; font-weight: bold; }
+        .status-warning { color: #ffc107; }
+        .status-ok { color: #28a745; }
+        .code { font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; background-color: #e9ecef; padding: 2px 5px; border-radius: 3px; font-size: 0.9em; }
+        .metric-value { font-size: 1.1em; font-weight: bold; color: #3498db; }
+        .note { font-size: 0.9em; color: #6c757d; margin-top: 5px; }
+        .judge-config-box ul, .coach-details-box ul { list-style: none; padding-left: 0; }
+        .judge-config-box li, .coach-details-box li { margin-bottom: 8px; }
+        .judge-config-box strong { color: #8e44ad; } /* Match border color */
+        .coach-details-box strong { color: #16a085; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>AI Coaching Simulation Report (Multi-Judge)</h1>
+    <p class="timestamp">Generated on: 2025-04-29 17:06:16</p>
+
+    <div class="coach-details-box">
+        <h2>AI Coach Configuration</h2>
+        <ul>
+            <li><strong>Coach LLM:</strong> <span class="code">gemini-2.5-flash-preview-04-17</span></li>
+            <li><strong>RAG Enabled:</strong> <span class="status-ok">True</span></li>
+            <li><strong>Coach System Prompt Enabled:</strong> <span class="status-ok">True</span></li>
+        </ul>
+    </div>
+
+     <div class="judge-config-box">
+        <h2>AI Judge Configuration</h2>
+        <ul><li><strong>Judge 1:</strong> <span class="code">openai / gpt-4o</span></li><li><strong>Judge 2:</strong> <span class="code">anthropic / claude-3-5-sonnet-20241022</span></li><li><strong>Judge 3:</strong> <span class="code">google / gemini-2.5-pro-preview-03-25</span></li></ul>
+    </div>
+
+    <div class="overall-performance-box">
+        <h2>Overall AI Performance Metrics (Combined Average)</h2>
+        <p class="note">Metrics averaged across all judges and all successfully assessed scenarios (3 scenarios).</p>
+
+        <h4>Overall Average Composite Score</h4>
+        <p>
+            <span class="metric-value">3.81 / 5.00</span>
+        </p>
+
+        <h4>Overall Average Competency Scores</h4>
+        <table class="competency-table">
+            <tr><th>Competency</th><th style="text-align: right;">Average Score</th></tr>
+<tr><td>Accountability</td><td>3.67</td></tr>
+<tr><td>Action Planning</td><td>4.33</td></tr>
+<tr><td>Active Listening</td><td>4.11</td></tr>
+<tr><td>Building Rapport and Trust</td><td>4.00</td></tr>
+<tr><td>Continuous Learning</td><td>3.56</td></tr>
+<tr><td>Ethical Foundation</td><td>2.67</td></tr>
+<tr><td>Facilitating Insight</td><td>4.33</td></tr>
+<tr><td>Goal Clarification</td><td>3.33</td></tr>
+<tr><td>Overall Effectiveness</td><td>4.22</td></tr>
+<tr><td>Powerful Questioning</td><td>3.78</td></tr>
+</table>
+
+    </div>
+    <div class="summary-box">
+        <h2>Overall Run Summary</h2>
+        <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Total Scenarios Processed</td><td>3</td></tr>
+            <tr><td>Total Runs Attempted (All Scenarios)</td><td>3</td></tr>
+            <tr><td>Total Runs Completed (Conversation OK)</td><td>3</td></tr>
+            <tr><td>Total Runs With >=1 Valid Assessment</td><td>3</td></tr>
+            <tr><td>Total Valid Individual Assessments</td><td>9</td></tr>
+            <tr><td>Total Failed Runs (Critical/Conv/Assess)</td><td class="status-ok">0</td></tr>
+            <tr><td>Total Runs Where Assessment Failed (All Judges)</td><td class="status-ok">0</td></tr>
+        </table>
+    </div>
+
+    <div class="config-box">
+        <h2>Configuration Used (Summary)</h2>
+        <table>
+            <tr><th>Parameter</th><th>Value</th></tr>
+<tr><td><span class="code">AI_JUDGE_COMPETENCY_WEIGHTS</span></td><td>Dict (Keys: [&#x27;Ethical Foundation&#x27;, &#x27;Building Rapport and Trust&#x27;, &#x27;Active Listening&#x27;, &#x27;Powerful Questioning&#x27;, &#x27;Goal Clarification&#x27;, &#x27;Facilitating Insight&#x27;, &#x27;Action Planning&#x27;, &#x27;Accountability&#x27;, &#x27;Continuous Learning&#x27;, &#x27;Overall Effectiveness&#x27;])</td></tr>
+<tr><td><span class="code">AI_JUDGE_MAX_TRANSCRIPT_LEN</span></td><td>25000</td></tr>
+<tr><td><span class="code">COACH_MAX_TOKENS</span></td><td>4000</td></tr>
+<tr><td><span class="code">COACH_MODEL</span></td><td>gemini-2.5-flash-preview-04-17</td></tr>
+<tr><td><span class="code">COACH_PROMPT_ENABLED</span></td><td>True</td></tr>
+<tr><td><span class="code">COACH_PROVIDER</span></td><td>google</td></tr>
+<tr><td><span class="code">COACH_TEMPERATURE</span></td><td>0.2</td></tr>
+<tr><td><span class="code">ENABLE_AI_JUDGE</span></td><td>True</td></tr>
+<tr><td><span class="code">ENABLE_RAG</span></td><td>True</td></tr>
+<tr><td><span class="code">ENABLE_RAG_SUMMARY</span></td><td>True</td></tr>
+<tr><td><span class="code">GENERATE_REPORT</span></td><td>True</td></tr>
+<tr><td><span class="code">MAX_TURNS</span></td><td>12</td></tr>
+<tr><td><span class="code">MIN_TURNS_FOR_EARLY_EXIT</span></td><td>3</td></tr>
+<tr><td><span class="code">NUM_RUNS</span></td><td>1</td></tr>
+<tr><td><span class="code">OUTPUT_DIR</span></td><td>coaching_simulation_output</td></tr>
+<tr><td><span class="code">RAG_CONTEXT_WINDOW</span></td><td>1</td></tr>
+<tr><td><span class="code">RAG_ENDPOINT</span></td><td>https://magic.neuropower.ai/vectorsearch</td></tr>
+<tr><td><span class="code">RAG_K_RESULTS</span></td><td>1</td></tr>
+<tr><td><span class="code">RAG_TIMEOUT</span></td><td>15</td></tr>
+<tr><td><span class="code">SAVE_TRANSCRIPTS</span></td><td>True</td></tr>
+<tr><td><span class="code">SCENARIOS</span></td><td>[&#x27;procrastination&#x27;, &#x27;conflict&#x27;, &#x27;career&#x27;]</td></tr>
+<tr><td><span class="code">SCENARIO_GOALS</span></td><td>Dict (Keys: [&#x27;procrastination&#x27;, &#x27;conflict&#x27;, &#x27;career&#x27;])</td></tr>
+<tr><td><span class="code">SUMMARY_MAX_RAW_LENGTH</span></td><td>20000</td></tr>
+<tr><td><span class="code">SUMMARY_MAX_TOKENS</span></td><td>1500</td></tr>
+<tr><td><span class="code">SUMMARY_MODEL</span></td><td>gemini-2.0-flash</td></tr>
+<tr><td><span class="code">SUMMARY_PROVIDER</span></td><td>google</td></tr>
+<tr><td><span class="code">SUMMARY_TEMPERATURE</span></td><td>0.2</td></tr>
+<tr><td><span class="code">SUMMARY_THRESHOLD_LENGTH</span></td><td>20000</td></tr>
+<tr><td><span class="code">USER_MAX_TOKENS</span></td><td>1500</td></tr>
+<tr><td><span class="code">USER_MODEL</span></td><td>gemini-2.0-flash</td></tr>
+<tr><td><span class="code">USER_PROVIDER</span></td><td>google</td></tr>
+<tr><td><span class="code">USER_TEMPERATURE</span></td><td>0.2</td></tr>
+
+        </table>
+    </div>
+
+    <h2>Performance by Scenario</h2>
+
+    <div class="scenario-box">
+        <h3>Scenario: career</h3>
+
+        <h4>Run Summary</h4>
+        <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Runs Attempted</td><td>1</td></tr>
+            <tr><td>Runs Completed (Conversation OK)</td><td>1</td></tr>
+            <tr><td>Runs With >=1 Valid Assessment</td><td>1</td></tr>
+            <tr><td>Total Valid Individual Assessments</td><td>3</td></tr>
+            <tr><td>Failed Runs (Total)</td><td class="status-ok">0</td></tr>
+            <tr><td>Runs Where Assessment Failed (All Judges)</td><td class="status-ok">0</td></tr>
+        </table>
+
+        <h4>Performance Statistics (Across 1 Completed Run)</h4>
+        <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Turn Count (Avg)</td><td>12.0</td></tr>
+            <tr><td>Turn Count (Stdev)</td><td>0.00</td></tr>
+            <tr><td>Turn Count (Range)</td><td>12 - 12</td></tr>
+            <tr><td>Duration (Avg Secs)</td><td>101.2</td></tr>
+            <tr><td>Duration (Stdev Secs)</td><td>0.00</td></tr>
+            <tr><td>Avg Errors Logged per Run</td><td>0.00</td></tr>
+        </table>
+
+        <h4>Combined Coaching Scores (Avg across 3 valid assessments)</h4>
+        <table class="competency-table">
+            <tr><th>Competency</th><th style="text-align: right;">Combined Avg Score</th></tr>
+            <tr><td>Accountability</td><td>3.67</td></tr>
+            <tr><td>Action Planning</td><td>4.33</td></tr>
+            <tr><td>Active Listening</td><td>4.00</td></tr>
+            <tr><td>Building Rapport and Trust</td><td>4.00</td></tr>
+            <tr><td>Continuous Learning</td><td>3.33</td></tr>
+            <tr><td>Ethical Foundation</td><td>2.33</td></tr>
+            <tr><td>Facilitating Insight</td><td>4.00</td></tr>
+            <tr><td>Goal Clarification</td><td>3.33</td></tr>
+            <tr><td>Overall Effectiveness</td><td>4.00</td></tr>
+            <tr><td>Powerful Questioning</td><td>4.00</td></tr>
+            <tr><td><strong>Combined Composite Score (Avg)</strong></td><td><strong>3.72</strong></td></tr>
+            <tr><td>Combined Composite Score (Stdev)</td><td>0.08</td></tr>
+        </table>
+        <h4>Per-Judge Score Breakdown (Average for this Scenario)</h4>
+        <table class="per-judge-table">
+            <tr>
+                <th>Competency</th><th>openai/gpt-4o<br><span class="note">(1 assess.)</span></th><th>anthropic/claude-3-5-sonnet-20241022<br><span class="note">(1 assess.)</span></th><th>google/gemini-2.5-pro-preview-03-25<br><span class="note">(1 assess.)</span></th>
+            </tr>
+            <tr><td>Accountability</td><td>3.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Action Planning</td><td>4.00</td><td>4.00</td><td>5.00</td></tr>
+            <tr><td>Active Listening</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Building Rapport and Trust</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Continuous Learning</td><td>3.00</td><td>3.00</td><td>4.00</td></tr>
+            <tr><td>Ethical Foundation</td><td>3.00</td><td>3.00</td><td>1.00</td></tr>
+            <tr><td>Facilitating Insight</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Goal Clarification</td><td>3.00</td><td>3.00</td><td>4.00</td></tr>
+            <tr><td>Overall Effectiveness</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Powerful Questioning</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td><strong>Composite Score (Avg)</strong></td><td><strong>3.64</strong></td><td><strong>3.72</strong></td><td><strong>3.80</strong></td></tr>
+        </table>
+
+        <h4>Termination Reasons (Across 1 Completed Run)</h4>
+        <table>
+            <tr><th>Reason</th><th>Count</th><th>Percentage</th></tr>
+            <tr><td>Maximum turns (12) reached</td><td>1</td><td>100.0%</td></tr>
+        </table>
+    </div> 
+    <div class="scenario-box">
+        <h3>Scenario: conflict</h3>
+
+        <h4>Run Summary</h4>
+        <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Runs Attempted</td><td>1</td></tr>
+            <tr><td>Runs Completed (Conversation OK)</td><td>1</td></tr>
+            <tr><td>Runs With >=1 Valid Assessment</td><td>1</td></tr>
+            <tr><td>Total Valid Individual Assessments</td><td>3</td></tr>
+            <tr><td>Failed Runs (Total)</td><td class="status-ok">0</td></tr>
+            <tr><td>Runs Where Assessment Failed (All Judges)</td><td class="status-ok">0</td></tr>
+        </table>
+
+        <h4>Performance Statistics (Across 1 Completed Run)</h4>
+        <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Turn Count (Avg)</td><td>12.0</td></tr>
+            <tr><td>Turn Count (Stdev)</td><td>0.00</td></tr>
+            <tr><td>Turn Count (Range)</td><td>12 - 12</td></tr>
+            <tr><td>Duration (Avg Secs)</td><td>115.9</td></tr>
+            <tr><td>Duration (Stdev Secs)</td><td>0.00</td></tr>
+            <tr><td>Avg Errors Logged per Run</td><td>0.00</td></tr>
+        </table>
+
+        <h4>Combined Coaching Scores (Avg across 3 valid assessments)</h4>
+        <table class="competency-table">
+            <tr><th>Competency</th><th style="text-align: right;">Combined Avg Score</th></tr>
+            <tr><td>Accountability</td><td>3.33</td></tr>
+            <tr><td>Action Planning</td><td>4.00</td></tr>
+            <tr><td>Active Listening</td><td>4.00</td></tr>
+            <tr><td>Building Rapport and Trust</td><td>4.00</td></tr>
+            <tr><td>Continuous Learning</td><td>3.67</td></tr>
+            <tr><td>Ethical Foundation</td><td>2.67</td></tr>
+            <tr><td>Facilitating Insight</td><td>4.33</td></tr>
+            <tr><td>Goal Clarification</td><td>3.00</td></tr>
+            <tr><td>Overall Effectiveness</td><td>4.00</td></tr>
+            <tr><td>Powerful Questioning</td><td>3.67</td></tr>
+            <tr><td><strong>Combined Composite Score (Avg)</strong></td><td><strong>3.69</strong></td></tr>
+            <tr><td>Combined Composite Score (Stdev)</td><td>0.15</td></tr>
+        </table>
+        <h4>Per-Judge Score Breakdown (Average for this Scenario)</h4>
+        <table class="per-judge-table">
+            <tr>
+                <th>Competency</th><th>openai/gpt-4o<br><span class="note">(1 assess.)</span></th><th>anthropic/claude-3-5-sonnet-20241022<br><span class="note">(1 assess.)</span></th><th>google/gemini-2.5-pro-preview-03-25<br><span class="note">(1 assess.)</span></th>
+            </tr>
+            <tr><td>Accountability</td><td>3.00</td><td>3.00</td><td>4.00</td></tr>
+            <tr><td>Action Planning</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Active Listening</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Building Rapport and Trust</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Continuous Learning</td><td>3.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Ethical Foundation</td><td>3.00</td><td>3.00</td><td>2.00</td></tr>
+            <tr><td>Facilitating Insight</td><td>4.00</td><td>4.00</td><td>5.00</td></tr>
+            <tr><td>Goal Clarification</td><td>3.00</td><td>3.00</td><td>3.00</td></tr>
+            <tr><td>Overall Effectiveness</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Powerful Questioning</td><td>3.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td><strong>Composite Score (Avg)</strong></td><td><strong>3.52</strong></td><td><strong>3.72</strong></td><td><strong>3.82</strong></td></tr>
+        </table>
+
+        <h4>Termination Reasons (Across 1 Completed Run)</h4>
+        <table>
+            <tr><th>Reason</th><th>Count</th><th>Percentage</th></tr>
+            <tr><td>Maximum turns (12) reached</td><td>1</td><td>100.0%</td></tr>
+        </table>
+    </div> 
+    <div class="scenario-box">
+        <h3>Scenario: procrastination</h3>
+
+        <h4>Run Summary</h4>
+        <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Runs Attempted</td><td>1</td></tr>
+            <tr><td>Runs Completed (Conversation OK)</td><td>1</td></tr>
+            <tr><td>Runs With >=1 Valid Assessment</td><td>1</td></tr>
+            <tr><td>Total Valid Individual Assessments</td><td>3</td></tr>
+            <tr><td>Failed Runs (Total)</td><td class="status-ok">0</td></tr>
+            <tr><td>Runs Where Assessment Failed (All Judges)</td><td class="status-ok">0</td></tr>
+        </table>
+
+        <h4>Performance Statistics (Across 1 Completed Run)</h4>
+        <table>
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Turn Count (Avg)</td><td>12.0</td></tr>
+            <tr><td>Turn Count (Stdev)</td><td>0.00</td></tr>
+            <tr><td>Turn Count (Range)</td><td>12 - 12</td></tr>
+            <tr><td>Duration (Avg Secs)</td><td>93.3</td></tr>
+            <tr><td>Duration (Stdev Secs)</td><td>0.00</td></tr>
+            <tr><td>Avg Errors Logged per Run</td><td>0.00</td></tr>
+        </table>
+
+        <h4>Combined Coaching Scores (Avg across 3 valid assessments)</h4>
+        <table class="competency-table">
+            <tr><th>Competency</th><th style="text-align: right;">Combined Avg Score</th></tr>
+            <tr><td>Accountability</td><td>4.00</td></tr>
+            <tr><td>Action Planning</td><td>4.67</td></tr>
+            <tr><td>Active Listening</td><td>4.33</td></tr>
+            <tr><td>Building Rapport and Trust</td><td>4.00</td></tr>
+            <tr><td>Continuous Learning</td><td>3.67</td></tr>
+            <tr><td>Ethical Foundation</td><td>3.00</td></tr>
+            <tr><td>Facilitating Insight</td><td>4.67</td></tr>
+            <tr><td>Goal Clarification</td><td>3.67</td></tr>
+            <tr><td>Overall Effectiveness</td><td>4.67</td></tr>
+            <tr><td>Powerful Questioning</td><td>3.67</td></tr>
+            <tr><td><strong>Combined Composite Score (Avg)</strong></td><td><strong>4.03</strong></td></tr>
+            <tr><td>Combined Composite Score (Stdev)</td><td>0.37</td></tr>
+        </table>
+        <h4>Per-Judge Score Breakdown (Average for this Scenario)</h4>
+        <table class="per-judge-table">
+            <tr>
+                <th>Competency</th><th>openai/gpt-4o<br><span class="note">(1 assess.)</span></th><th>anthropic/claude-3-5-sonnet-20241022<br><span class="note">(1 assess.)</span></th><th>google/gemini-2.5-pro-preview-03-25<br><span class="note">(1 assess.)</span></th>
+            </tr>
+            <tr><td>Accountability</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Action Planning</td><td>4.00</td><td>5.00</td><td>5.00</td></tr>
+            <tr><td>Active Listening</td><td>4.00</td><td>5.00</td><td>4.00</td></tr>
+            <tr><td>Building Rapport and Trust</td><td>4.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Continuous Learning</td><td>3.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Ethical Foundation</td><td>3.00</td><td>3.00</td><td>3.00</td></tr>
+            <tr><td>Facilitating Insight</td><td>4.00</td><td>5.00</td><td>5.00</td></tr>
+            <tr><td>Goal Clarification</td><td>3.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td>Overall Effectiveness</td><td>4.00</td><td>5.00</td><td>5.00</td></tr>
+            <tr><td>Powerful Questioning</td><td>3.00</td><td>4.00</td><td>4.00</td></tr>
+            <tr><td><strong>Composite Score (Avg)</strong></td><td><strong>3.60</strong></td><td><strong>4.30</strong></td><td><strong>4.18</strong></td></tr>
+        </table>
+
+        <h4>Termination Reasons (Across 1 Completed Run)</h4>
+        <table>
+            <tr><th>Reason</th><th>Count</th><th>Percentage</th></tr>
+            <tr><td>Maximum turns (12) reached</td><td>1</td><td>100.0%</td></tr>
+        </table>
+    </div> 
+</div> </body>
+</html>
